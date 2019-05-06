@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
 group :test do
-    gem 'cucumber'
-    gem 'rspec'
+    gem 'capybara'
+    gem "cucumber"
+    gem "faker"
+    gem "httparty"
+    gem "poltergeist"
+    gem 'pry'
+    gem "rspec"
+    gem "selenium-webdriver"
+    # gem "rails"
+    gem 'site_prism'
 end
