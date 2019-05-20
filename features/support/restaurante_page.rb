@@ -1,4 +1,4 @@
-#Alterar o link na env.rb para 'https://portal.qaninja.io'
+#Alterar o link na env.rb para 'http://enjoeat-sp1.herokuapp.com'
 class Restaurante < SitePrism::Page
     set_url '/restaurants'
 
