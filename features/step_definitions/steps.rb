@@ -23,7 +23,9 @@ Então("devo ver a seguinte notificação {string}") do |notificacao|
 end
 
 #Restaurantes, simulando  Ifood
+#Mover na feature a tag '@restaurante' para rodar cada cenário
 Dado("que tenho uma lista de restaurantes") do
+    #os dados são encontrados pela posição de cada elemento
     @restaurant_data = [
         { name: 'Bread & Bakery', category: 'Padaria', delivery_time: '25 minutos', rating: 4.9},
         { name: 'Burger House', category: 'Hamburgers', delivery_time: '30 minutos', rating: 3.5},
@@ -64,7 +66,9 @@ Então("cada restaurante deve exibir o tempo de entrega") do
         expect(restaurants[index]).to have_text value[:delivery_time]#verificando tempo de entrega (delivery_time)
     end
 end
-  
+
+
+#Feature restaurantes_1 
 Então("cada restaurante deve exibir sua nota de avaliação") do
     #método all em uma nova variavel
     restaurants = all('.restaurant-item')
@@ -73,5 +77,33 @@ Então("cada restaurante deve exibir sua nota de avaliação") do
     @restaurant_data.each_with_index do |value, index|
         sleep 2
         expect(restaurants[index]).to have_text value[:rating]#verificando nota de avaliação (rating)
+    end
+end
+
+Então("cada restaurante deve ter {int} {string} {string} {string} {float}") do |id, name, category, delivery_time, rating|
+    #os dados são encontrados pelo ID de cada elemento
+    restaurants = all('.restaurant-item')
+
+    expect(restaurants[id]).to have_text name.upcase #método 'upcase' converte tudo em letra maiúsucla
+    expect(restaurants[id]).to have_text category
+    expect(restaurants[id]).to have_text delivery_time
+    expect(restaurants[id]).to have_text rating
+end
+
+#mover a tag @restaurante para esse cenário
+Dado("que temos os seguintes Restaurantes") do |table|
+    @restaurante_data = table.hashes
+
+end
+  
+Então("devo ver todos os restaurates desta lista") do
+    restaurants = all('.restaurant-item')
+
+#código mais enxuto, tem uma unica verificação.
+    @restaurante_data.each_with_index do |value, index|
+        expect(restaurants[index]).to have_text value['nome'].upcase
+        expect(restaurants[index]).to have_text value['categoria']
+        expect(restaurants[index]).to have_text value['entrega']
+        expect(restaurants[index]).to have_text value['avaliacao']
     end
 end
