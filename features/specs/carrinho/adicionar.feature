@@ -14,7 +14,7 @@
             Entao deve ser adicionado 1 unidade(s) deste item
             E valor total de ser de "R$ 8,70"
 
-        @temp
+        
         Cenario: Adicionar 2 unidade
             Dado que os produtos desejados é "Donut"
             E o valor do produto é de "R$ 2,50"
@@ -22,13 +22,12 @@
             Entao deve ser adicionado 3 unidade(s) deste item
             E valor total de ser de "R$ 7,50"
 
-
         Cenario: Adicionar varios itens
             Dado que os produtos desejados sao:
-                | nome                   | preco    |
-                | Cup Cake               | R$ 8,70  |
-                | Donut                  | R$ 2,50  |
-                | Pão Artesanal Italiano | R$ 15,90 |
+                | nome                   | preco    | quantidade |
+                | Cup Cake               | R$ 8,70  | 1          |
+                | Donut                  | R$ 2,50  | 2          |
+                | Pão Artesanal Italiano | R$ 15,90 | 1          |
             Quando eu adiciono todos os itens
             Entao vejo todos os itens no carrinho
-            E valor total de ser de "R$ 27,10"
+            E valor total de ser de "R$ 29,60"

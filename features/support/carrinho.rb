@@ -8,5 +8,4 @@ class CarrinhoBreadBakery < SitePrism::Page
         buca_input.set termo
         buscar_button.click
     end
-
 end
